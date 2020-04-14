@@ -11,8 +11,8 @@ class Product extends Model
 
     protected $guarded = [];
 
-    private $STATUS_ACTIVE = 1;
-    private $STATUS_INACTIVE = 0;
+    public const STATUS_ACTIVE = 1;
+    public const STATUS_INACTIVE = 0;
 
     public function photos()
     {

@@ -30,9 +30,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
 
         parent::boot();
+
+        Route::bind('product', function($product)
+        {
+            return \App\Models\Product::whereId($product)
+                ->whereStatus(\App\Models\Product::STATUS_ACTIVE)
+                ->firstOrFail();
+        });
     }
 
     /**

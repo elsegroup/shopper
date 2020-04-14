@@ -13,13 +13,43 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/* Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
 
 
-Route::group(['as' => 'api.', 'namespace' => 'Api/v1', 'prefix' => 'api'], function () {
-    Route::group(['prefix' => 'cart'], function () {
-        Route::post('add', '');
-    });
+Route::group([
+        'as' => 'api.',
+        'namespace' => 'Api\v1',
+    ], function () {
+        Route::group([
+            'prefix' => 'products'
+        ], function () {
+            Route::get('/', 'ProductsController@index')->name('index');
+            Route::get('/{product}', 'ProductsController@getProductById')->name('show');
+
+            /*
+                Route::post('/', 'ProductsController@store')->name('store');
+                Route::put('/{id}', 'ProductsController@update')->name('update');
+                Route::delete('/{id}', 'ProductsController@destroy')->name('destroy');
+            */
+        });
+
+        Route::group([
+            'prefix' => 'categories'
+        ], function () {
+            Route::get('/', 'CategoriesController@index')->name('index');
+            Route::get('/{catalog}', 'CategoriesController@getCategory');
+        });
+
+        /* Route::group([
+            'prefix' => 'cart'
+        ], function () {
+            Route::group(['prefix' => 'cart-item'], function () {
+                Route::get('/', 'CartItemController@index')->name('index');
+                Route::post('/', 'CartItemController@store')->name('store');
+                Route::put('/{id}', 'CartItemController@update')->name('update');
+                Route::delete('/{id}', 'CartItemController@destroy')->name('destroy');
+            });
+        }); */
 });
