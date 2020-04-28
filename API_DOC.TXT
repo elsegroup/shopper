@@ -1,0 +1,38 @@
+
+api/products/ - GET
+"data": [
+    {
+      "id": 1,
+      "name": "SsJpZbkiUJ",
+      "description": "vuMpasUQmf",
+    },
+    {
+      "id": 1,
+      "name": "SsJpZbkiUJ",
+      "description": "vuMpasUQmf",
+    }
+  ],
+
+api/products/1 - GET
+"data": {
+	"id": 1,
+	"name": "SsJpZbkiUJ",
+	"description": "vuMpasUQmf",
+	"category_id": null
+}
+
+api/catalogs - GET
+"data": [
+    {
+      "id": 1,
+      "name": "На 8 марта",
+      "description": "Подарки на 8 марта",
+    },
+    {
+      "id": 1,
+      "name": "На 8 марта",
+      "description": "Подарки на 8 марта",
+    }
+  ],
+
+api/catalogs/1 - GET
