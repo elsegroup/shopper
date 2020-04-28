@@ -39,6 +39,13 @@ class RouteServiceProvider extends ServiceProvider
                 ->whereStatus(\App\Models\Product::STATUS_ACTIVE)
                 ->firstOrFail();
         });
+
+        Route::bind('catalog', function($catalog)
+        {
+            return \App\Models\Category::whereSlug($catalog)
+                ->whereStatus(\App\Models\Category::STATUS_ACTIVE)
+                ->firstOrFail();
+        });
     }
 
     /**

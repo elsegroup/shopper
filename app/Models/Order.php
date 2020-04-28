@@ -15,4 +15,24 @@ class Order extends Model
         return $this->hasMany('App\Models\OrderItem');
     }
 
+    public function customer()
+    {
+        return $this->hasOne('App\Models\Customer');
+    }
+
+    public function orderTotal()
+    {
+        return $this->belongsTo('App\Models\OrderTotal');
+    }
+
+    public function orderStatus()
+    {
+        return $this->hasOne('App\Models\OrderStatus');
+    }
+
+    public function voucher()
+    {
+        return $this->belongsTo('App\Models\Voucher');
+    }
+
 }

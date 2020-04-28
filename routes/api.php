@@ -27,19 +27,13 @@ Route::group([
         ], function () {
             Route::get('/', 'ProductsController@index')->name('index');
             Route::get('/{product}', 'ProductsController@getProductById')->name('show');
-
-            /*
-                Route::post('/', 'ProductsController@store')->name('store');
-                Route::put('/{id}', 'ProductsController@update')->name('update');
-                Route::delete('/{id}', 'ProductsController@destroy')->name('destroy');
-            */
         });
 
         Route::group([
-            'prefix' => 'categories'
+            'prefix' => 'catalogs'
         ], function () {
-            Route::get('/', 'CategoriesController@index')->name('index');
-            Route::get('/{catalog}', 'CategoriesController@getCategory');
+            Route::get('/', 'CatalogsController@index')->name('index');
+            Route::get('/{catalog}', 'CatalogsController@getCatalogBySlug');
         });
 
         /* Route::group([

@@ -34,4 +34,9 @@ class Product extends Model
         return $this->belongsTo('App\Models\PricesRegion');
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category');
+    }
+
 }
