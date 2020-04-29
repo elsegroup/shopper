@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Filters\ProductsFilter;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -37,6 +38,11 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany('App\Models\Category');
+    }
+
+    public function scopeFilter($builder, $filters)
+    {
+        return $filters->apply($builder);
     }
 
 }

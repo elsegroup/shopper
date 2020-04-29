@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
 use App\Models\Product;
-use App\Http\Resources\ProductCollection;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Filters\ProductsFilter;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductCollection;
 
 class ProductsController extends Controller
 {
@@ -23,10 +23,14 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, ProductsFilter $filters)
     {
+        $products = Product::whereStatus(Product::STATUS_ACTIVE);
+
+        $products = Product::filter($filters)->paginate(1);
+
         return new ProductCollection(
-            Product::whereStatus(Product::STATUS_ACTIVE)->paginate(1)
+            $products
         );
     }
 
@@ -40,5 +44,13 @@ class ProductsController extends Controller
     {
         return ProductResource::make($product);
     }
+
+    /*public function search(Request $request)
+    {
+        $products = Product::with('info');
+        dd($products);
+        $filters = (new ProductsFilter($products, $request)->apply()->get());
+        return $filters;
+    }*/
 
 }

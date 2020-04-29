@@ -28,6 +28,10 @@ Route::group([
             Route::get('/', 'ProductsController@index')->name('index');
             Route::get('/{product}', 'ProductsController@getProductById')->name('show');
         });
+       //  /products?
+       //  &order['category']=1
+       //  &filter[price_to]=123
+       //  &filter[price_from]=123
 
         Route::group([
             'prefix' => 'catalogs'
