@@ -11,12 +11,6 @@ use App\Http\Resources\ProductCollection;
 
 class ProductsController extends Controller
 {
-    protected $productModel;
-
-    public function __construct(Product $productModel)
-    {
-        return $this->productModel = $productModel;
-    }
 
     /**
      * Display a listing of the resource.
@@ -29,9 +23,13 @@ class ProductsController extends Controller
 
         $products = Product::filter($filters)->paginate(1);
 
-        return new ProductCollection(
-            $products
-        );
+        if (empty($products)) {
+            return response()->json([
+                'errors' => "Продукты по заданным фильтрам не найдены.",
+            ], 400);
+        }
+
+        return new ProductCollection($products);
     }
 
     /**
@@ -40,17 +38,14 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getProductById(Product $product)
+    public function show(Product $product)
     {
+        if (empty($product)) {
+            return response()->json([
+                'errors' => "Продукт с таким идентификатором не найден.",
+            ], 400);
+        }
         return ProductResource::make($product);
     }
-
-    /*public function search(Request $request)
-    {
-        $products = Product::with('info');
-        dd($products);
-        $filters = (new ProductsFilter($products, $request)->apply()->get());
-        return $filters;
-    }*/
 
 }

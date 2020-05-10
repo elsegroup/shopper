@@ -15,16 +15,17 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('prices_regions_name');
+            // $table->string('prices_regions_name');
             $table->decimal('delivery_cost', 10, 2);
-            $table->decimal('cost', 10, 2);
-            $table->text('note');
-            $table->boolean('current_status');
-            $table->text('cancel_reason');
-            $table->string('customer_phone'); // TODO: придумать что-то лучшее
+            $table->decimal('total_price', 10, 2);
+            $table->text('note')->nullable();
+            $table->text('cancel_reason')->nullable();
+            $table->string('customer_email');
+            $table->string('customer_phone_number');
             $table->string('customer_name');
-            $table->text('delivery_address');
-            $table->ipAddress('visitor');
+            $table->text('customer_address');
+            $table->bigInteger('current_status');
+            // $table->ipAddress('visitor_ip');
             $table->timestamps();
         });
     }

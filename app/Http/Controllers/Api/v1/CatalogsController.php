@@ -38,7 +38,7 @@ class CatalogsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getCatalogBySlug(Catalog $catalog)
+    public function show(Catalog $catalog)
     {
         return CatalogResource::make($catalog);
     }

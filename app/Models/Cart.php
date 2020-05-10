@@ -8,10 +8,11 @@ class Cart extends Model
 {
 
     protected $table = 'carts';
+    public $incrementing = false;
     protected $guarded = [];
 
     public function items()
     {
-        return $this->belongsTo('App\Models\CartItem');
+        return $this->hasMany('App\Models\CartItem');
     }
 }
