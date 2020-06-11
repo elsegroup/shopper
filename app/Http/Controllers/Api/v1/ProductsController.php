@@ -26,7 +26,7 @@ class ProductsController extends Controller
         if (empty($products)) {
             return response()->json([
                 'errors' => "Продукты по заданным фильтрам не найдены.",
-            ], 400);
+            ], 400)->header('Access-Control-Allow-Origin', '*');
         }
 
         return new ProductCollection($products);

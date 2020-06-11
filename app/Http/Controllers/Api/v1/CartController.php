@@ -63,7 +63,7 @@ class CartController extends Controller
 
         if ($cart->key != $cartKey) {
             return response()->json([
-                'message' => 'Ключ который вы предоставили не совпадает с ключом этой карты.',
+                'message' => 'Ключ который вы предоставили не совпадает с ключом этой корзины.',
             ], 400);
         }
 
@@ -94,7 +94,7 @@ class CartController extends Controller
         //Check if the CarKey is Valid
         if ($cart->key != $cartKey) {
             return response()->json([
-                'message' => 'Ключ который вы предоставили не совпадает с ключом этой карты',
+                'message' => 'Ключ который вы предоставили не совпадает с ключом этой корзины',
             ], 400);
         }
 
@@ -220,7 +220,7 @@ class CartController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'message' => 'Ключ который вы предоставили не совпадает с ключом этой карты.',
+                'message' => 'Ключ который вы предоставили не совпадает с ключом этой корзины.',
             ], 400);
         }
     }
@@ -241,7 +241,7 @@ class CartController extends Controller
 
         if ($cart->key != $cartKey) {
             return response()->json([
-                'message' => 'Ключ который вы предоставили не совпадает с ключом этой карты.',
+                'message' => 'Ключ который вы предоставили не совпадает с ключом этой корзины.',
             ], 400);
         }
 

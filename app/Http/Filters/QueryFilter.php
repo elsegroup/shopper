@@ -28,6 +28,8 @@ class QueryFilter
 
 	public function filters()
 	{
+		if (!$this->request->has('filter')) return [];
+
 		return $this->request->toArray()['filter'];
 	}
 }

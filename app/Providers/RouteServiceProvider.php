@@ -35,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('product', function($product)
         {
-            return \App\Models\Product::whereId($product)
+            return \App\Models\Product::whereSlug($product)
                 ->whereStatus(\App\Models\Product::STATUS_ACTIVE)
                 ->firstOrFail();
         });
