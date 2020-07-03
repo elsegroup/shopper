@@ -121,12 +121,13 @@ class CartController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'cartKey' => 'required',
-            'name' => 'required|string|min:4|max:30',
-            'adress' => 'required',
-            'email' => 'email:rfc,dns',
-            //'phone' => 'required|regex:\/(992)[0-9]{9}\/',
+            'firstName' => 'required|string|min:4|max:30',
+            'lastName' => 'required|string|min:4|max:30',
             'phone' => 'required|min:5|digits_between:7,18',
-            'note' => 'nullable|string',
+            'city' => 'required',
+            'adress' => 'required',
+            //'phone' => 'required|regex:\/(992)[0-9]{9}\/',
+            // 'note' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
