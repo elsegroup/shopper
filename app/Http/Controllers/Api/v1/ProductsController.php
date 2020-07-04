@@ -22,7 +22,6 @@ class ProductsController extends Controller
 
         $products = Product::filter($filters)
             ->whereStatus(Product::STATUS_ACTIVE)
-            ->with('catalogs')
             ->get();
 
         if (empty($products)) {
