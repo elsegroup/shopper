@@ -14,6 +14,12 @@ class CatalogCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'data' => [
+                'id' => $this->id,
+                'name' => $this->name,
+                'slug' => $this->slug
+            ]
+        ];
     }
 }
