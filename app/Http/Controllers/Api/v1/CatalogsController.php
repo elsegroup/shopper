@@ -24,7 +24,7 @@ class CatalogsController extends Controller
     public function index()
     {
         return new CatalogCollection(
-            Catalog::whereStatus(Catalog::STATUS_ACTIVE)->with('products')->get()
+            Catalog::whereStatus(Catalog::STATUS_ACTIVE)->get()
         );
     }
 

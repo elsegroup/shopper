@@ -37,6 +37,7 @@ class RouteServiceProvider extends ServiceProvider
         {
             return \App\Models\Product::whereSlug($product)
                 ->whereStatus(\App\Models\Product::STATUS_ACTIVE)
+                ->with('categories')
                 ->firstOrFail();
         });
 
@@ -44,6 +45,7 @@ class RouteServiceProvider extends ServiceProvider
         {
             return \App\Models\Category::whereSlug($catalog)
                 ->whereStatus(\App\Models\Category::STATUS_ACTIVE)
+                ->with('products')
                 ->firstOrFail();
         });
 
