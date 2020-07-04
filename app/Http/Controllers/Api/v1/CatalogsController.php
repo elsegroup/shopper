@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Models\Category as Catalog;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CatalogResource;
-use App\Http\Resources\ProductResource;
 use App\Http\Resources\CatalogCollection;
-use App\Http\Resources\ProductCollection;
 
 class CatalogsController extends Controller
 {
@@ -28,7 +24,7 @@ class CatalogsController extends Controller
     public function index()
     {
         return new CatalogCollection(
-            Catalog::whereStatus(Catalog::STATUS_ACTIVE)->get()
+            Catalog::whereStatus(Catalog::STATUS_ACTIVE)->with('products')->get()
         );
     }
 

@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
             'weight' => $this->weight,
             'stock' => $this->stock,
             'min' => $this->minimum,
-            'catalogs' => $this->categories,
+            'catalogs' => CatalogResource::collection($this->whenLoaded('categories')),
             'slug' => $this->slug
         ];
     }

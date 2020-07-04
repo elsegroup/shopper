@@ -19,9 +19,11 @@ class ProductsController extends Controller
      */
     public function index(Request $request, ProductsFilter $filters)
     {
-        $products = Product::whereStatus(Product::STATUS_ACTIVE);
 
-        $products = Product::filter($filters)->paginate(1);
+        $products = Product::filter($filters)
+            ->whereStatus(Product::STATUS_ACTIVE)
+            ->with('catalogs')
+            ->get();
 
         if (empty($products)) {
             return response()->json([

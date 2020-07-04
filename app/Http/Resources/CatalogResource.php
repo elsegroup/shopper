@@ -16,11 +16,11 @@ class CatalogResource extends JsonResource
     {
         return [
             'data' => [
+                'id' => $this->id,
                 'name' => $this->name,
                 'description' => $this->description,
                 'image' => $this->image,
-                'parent_id' => $this->parent_id,
-                'products' => ProductCollection::make($this->products),
+                'products' => ProductCollection::make($this->whenLoaded('products')),
                 'slug' => $this->slug,
             ]
         ];
