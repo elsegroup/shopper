@@ -15,14 +15,15 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     * @param ProductsFilter $filters
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request, ProductsFilter $filters)
     {
-
         $products = Product::filter($filters)
             ->whereStatus(Product::STATUS_ACTIVE)
-            ->get();
+            ->paginate(2);
 
         if (empty($products)) {
             return response()->json([
@@ -36,7 +37,7 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)

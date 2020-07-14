@@ -20,7 +20,6 @@ class CatalogResource extends JsonResource
                 'name' => $this->name,
                 'description' => $this->description,
                 'image' => $this->image,
-                'products' => ProductCollection::make($this->whenLoaded('products')),
                 'slug' => $this->slug,
             ]
         ];

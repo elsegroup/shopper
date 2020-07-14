@@ -6,9 +6,6 @@ Route::group([
         'namespace' => 'Api\v1',
         'middleware' => ['cors', 'api']
     ], function () {
-        Route::get('test', function () {
-            return 123;
-        });
         Route::apiResource('products', 'ProductsController')->except(['update', 'store', 'destroy']);
         Route::apiResource('catalogs', 'CatalogsController')->except(['update', 'store', 'destroy']);
         // Route::apiResource('carts', 'CartController')->except(['update', 'index']);
