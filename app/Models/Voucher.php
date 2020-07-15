@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +11,6 @@ class Voucher extends Model
 
     public function order()
     {
-        return $this->hasOne('App\Models\Orded');
+        return $this->hasOne('App\Models\Order');
     }
 }
